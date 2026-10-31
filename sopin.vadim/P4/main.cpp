@@ -50,6 +50,11 @@ int main()
     std::cerr << "Not enough memory\n";
     return 1;
   }
+  if (str[0] == '\0' && std::cin.eof()) {
+    delete[] str;
+    std::cerr << "No input\n";
+    return 1;
+  }
   std::cout << sopin::hasRep(str) << "\n";
   delete[] str;
   return 0;
