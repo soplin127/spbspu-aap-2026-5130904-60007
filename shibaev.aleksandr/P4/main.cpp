@@ -45,6 +45,10 @@ int main()
 
 std::size_t shibaev::distinctLetters(const char *str)
 {
+  if (str == nullptr) {
+    return 0;
+  }
+
   bool letters[shibaev::alphabet_size]{};
   std::size_t i = 0;
 
