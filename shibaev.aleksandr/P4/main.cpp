@@ -4,8 +4,7 @@
 #include <cstddef>
 #include <string>
 
-namespace shibaev
-{
+namespace shibaev {
   const std::size_t alphabet_size = 26;
   const int error_code = 1;
 
@@ -29,7 +28,7 @@ int main()
     return shibaev::error_code;
   }
 
-  const std::size_t count = shibaev::distinctLetters (source->c_str());
+  const std::size_t count = shibaev::distinctLetters(source->c_str());
 
   std::cout << count << '\n';
   std::cout.flush();
@@ -50,7 +49,7 @@ std::size_t shibaev::distinctLetters(const char *str)
   std::size_t i = 0;
 
   while (str[i] != '\0') {
-    const char c = static_cast<char>(std::tolower(static_cast<unsigned char>(str[i])));
+    const char c = static_cast< char >(std::tolower(static_cast< unsigned char >(str[i])));
     if ((c >= 'a') && (c <= 'z')) {
       letters[c - 'a'] = true;
     }
