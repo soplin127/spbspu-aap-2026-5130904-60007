@@ -14,6 +14,9 @@ namespace yilman {
 
 bool yilman::parseTaskNumber(const char *str, int &num)
 {
+  if (str == nullptr) {
+    return false;
+  }
   if (str[0] == '\0' || str[1] != '\0') {
     return false;
   }
@@ -30,6 +33,9 @@ bool yilman::parseTaskNumber(const char *str, int &num)
 
 bool yilman::readMatrix(std::istream &in, int *data, std::size_t rows, std::size_t cols)
 {
+  if (data == nullptr) {
+    return false;
+  }
   for (std::size_t i = 0; i < rows * cols; ++i) {
     in >> data[i];
     if (!in) {
@@ -41,6 +47,9 @@ bool yilman::readMatrix(std::istream &in, int *data, std::size_t rows, std::size
 
 long long yilman::minSumAntiDiagonal(const int *data, std::size_t rows, std::size_t cols)
 {
+  if (data == nullptr) {
+    return 0;
+  }
   const std::size_t n = rows < cols ? rows : cols;
   if (n < 2) {
     return 0;
@@ -67,6 +76,9 @@ long long yilman::minSumAntiDiagonal(const int *data, std::size_t rows, std::siz
 
 bool yilman::writeResult(const char *filename, long long result)
 {
+  if (filename == nullptr) {
+    return false;
+  }
   std::ofstream out(filename);
   if (!out) {
     return false;
