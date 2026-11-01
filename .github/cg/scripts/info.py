@@ -16,7 +16,7 @@ CG points that will be checked by clang-tidy:
   8   9   10  21  23  26  30  32  35  36  37  38  44  45  47  48  50
 
 CG points that will be checked, but you should be carefull with them:
-  9   10  22  35  50
+  9   10  22  35  48  50
 
 CG points that are agreements and will remain on your conscience:
   6   7   24  25  27  28  29  31  42  43  46  51  54  56

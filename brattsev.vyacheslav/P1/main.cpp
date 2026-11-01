@@ -7,14 +7,8 @@ int main()
   long long changes = 0;
   bool is_first = true;
 
-  while (true)
+  while (std::cin >> current)
   {
-    if (!(std::cin >> current))
-    {
-      std::cerr << "ошибка\n";
-      return 1;
-    }
-
     if (current == 0)
     {
       break;
@@ -37,6 +31,12 @@ int main()
       }
       prev = current;
     }
+  }
+
+  if (std::cin.fail() && !std::cin.eof())
+  {
+    std::cerr << "ошибка\n";
+    return 1;
   }
 
   std::cout << changes << "\n";
