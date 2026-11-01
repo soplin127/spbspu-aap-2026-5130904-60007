@@ -3,8 +3,7 @@
 #include <new>
 #include <cctype>
 
-namespace tsvetkov
-{
+namespace tsvetkov {
   std::size_t capacity = 16;
   constexpr std::size_t coef = 2;
   constexpr int memerr = 1;
