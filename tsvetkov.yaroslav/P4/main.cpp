@@ -4,10 +4,11 @@
 #include <cctype>
 
 namespace tsvetkov {
-  std::size_t capacity = 16;
+  constexpr std::size_t capacity = 16;
   constexpr std::size_t coef = 2;
   constexpr int memerr = 1;
   constexpr int argerr = 2;
+  constexpr int inputerr = 3;
   char* readline(std::size_t& length);
   char* removeLatin(const char* src, char* dst) noexcept;
 }
@@ -21,6 +22,11 @@ int main()
   } catch (const std::bad_alloc&) {
     std::cerr << "Not enough memory\n";
     return tsvetkov::memerr;
+  }
+  if (len == 0 && std::cin.eof()) {
+    delete[] input;
+    std::cerr << "No input\n";
+    return tsvetkov::inputerr;
   }
 
   char* result = nullptr;
@@ -47,25 +53,26 @@ int main()
 
 char* tsvetkov::readline(std::size_t& length)
 {
+  std::size_t buf_capacity = capacity;
   std::size_t size = 0;
-  char* buf = new char[capacity];
+  char* buf = new char[buf_capacity];
 
   char c = 0;
   while (std::cin.get(c) && c != '\n') {
-    if (size + 1 == capacity) {
-      char* newBuf = nullptr;
+    if (size + 1 == buf_capacity) {
+      char* new_buf = nullptr;
       try {
-        newBuf = new char[capacity * coef];
+        new_buf = new char[buf_capacity * coef];
       } catch (const std::bad_alloc&) {
         delete[] buf;
         throw;
       }
       for (std::size_t i = 0; i < size; ++i) {
-        newBuf[i] = buf[i];
+        new_buf[i] = buf[i];
       }
       delete[] buf;
-      buf = newBuf;
-      capacity *= coef;
+      buf = new_buf;
+      buf_capacity *= coef;
     }
     buf[size] = c;
     ++size;
