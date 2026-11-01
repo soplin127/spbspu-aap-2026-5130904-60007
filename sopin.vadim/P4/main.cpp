@@ -1,6 +1,7 @@
 #include <cstddef>
 #include <cstring>
 #include <iostream>
+#include <istream>
 #include <new>
 
 namespace sopin {
@@ -16,7 +17,8 @@ namespace sopin {
 
   char* getLine(std::istream& in)
   {
-    std::size_t capacity = 16;
+    constexpr std::size_t initial_capacity = 16;
+    std::size_t capacity = initial_capacity;
     std::size_t size = 0;
     char* str = new char[capacity];
     char c = '\0';
