@@ -7,6 +7,9 @@
 namespace sopin {
   int hasRep(const char* str)
   {
+    if (str == nullptr) {
+      return 0;
+    }
     for (; *str != '\0'; ++str) {
       if (std::strchr(str + 1, *str) != nullptr) {
         return 1;
